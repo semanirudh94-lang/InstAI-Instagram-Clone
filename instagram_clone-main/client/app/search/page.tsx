@@ -15,16 +15,18 @@ export default function SearchPage() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<TaggableUser[]>([]);
   const [following, setFollowing] = useState<Set<string>>(new Set());
+  const [suggestions, setSuggestions] = useState<TaggableUser[]>([]);
   const [loading, setLoading] = useState(false);
-  const [searched, setSearched] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     axiosInstance
       .get("/api/follow/following")
-      .then((res) =>
-        setFollowing(new Set((res.data.users ?? []).map((u: any) => u._id))),
-      )
+      .then((res) => {
+        const users = res.data.users ?? [];
+        setSuggestions(users);
+        setFollowing(new Set(users.map((u: any) => u._id)));
+      })
       .catch(() => {});
     return () => {
       if (timer.current) clearTimeout(timer.current);
@@ -35,7 +37,6 @@ export default function SearchPage() {
     if (timer.current) clearTimeout(timer.current);
     if (query.trim().length < 2) {
       setResults([]);
-      setSearched(false);
       return;
     }
     timer.current = setTimeout(async () => {
@@ -46,10 +47,12 @@ export default function SearchPage() {
         setResults([]);
       } finally {
         setLoading(false);
-        setSearched(true);
       }
     }, 350);
   }, [query]);
+
+  const searching = query.trim().length >= 2;
+  const shown = searching ? results : suggestions;
 
   const toggleFollow = async (user: TaggableUser) => {
     const isFollowing = following.has(user._id);
@@ -95,19 +98,25 @@ export default function SearchPage() {
           </div>
 
           <p className="text-xs text-ig-muted mt-3">
-            {query.trim().length < 2 ? t("search.hint") : ""}
+            {searching ? t("search.hint") : ""}
           </p>
 
           {loading && (
             <p className="text-sm text-ig-muted mt-6">{t("common.loading")}</p>
           )}
 
-          {!loading && searched && results.length === 0 && (
+          {!loading && searching && shown.length === 0 && (
             <p className="text-sm text-ig-muted mt-6">{t("search.noResults")}</p>
           )}
 
+          {!searching && suggestions.length > 0 && (
+            <h2 className="text-sm font-semibold text-ig-muted mt-6 mb-1">
+              {t("right.suggestedForYou")}
+            </h2>
+          )}
+
           <div className="flex flex-col gap-1 mt-4">
-            {results.map((user) => {
+            {shown.map((user) => {
               const isFollowing = following.has(user._id);
               return (
                 <div

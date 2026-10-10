@@ -68,7 +68,7 @@ export default function ReelsPage() {
                 controls
                 playsInline
                 loop
-                className="max-h-full max-w-full md:rounded-lg"
+                className="w-full max-h-full object-contain md:rounded-lg"
               />
               <div className="absolute left-4 bottom-6 md:bottom-10 flex items-center gap-3 max-w-[80%]">
                 <Link
