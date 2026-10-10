@@ -11,8 +11,11 @@ export default function AuthGuard({ children }: any) {
   const pathname = usePathname();
 
   const user = useAuthStore((state) => state.user);
+  const ready = useAuthStore((state) => state.ready);
 
   useEffect(() => {
+    if (!ready) return;
+
     // Not logged in and trying to access a protected page
     if (!user && !publicRoutes.includes(pathname)) {
       router.replace("/login");
@@ -22,7 +25,7 @@ export default function AuthGuard({ children }: any) {
     if (user && publicRoutes.includes(pathname)) {
       router.replace("/");
     }
-  }, [user, pathname, router]);
+  }, [user, ready, pathname, router]);
 
   return children;
 }

@@ -10,6 +10,21 @@ Nodemailer (Gmail), Twilio (optional), Razorpay, Groq (optional AI helper).
 
 ---
 
+## Live deployment
+
+| | |
+| --- | --- |
+| Frontend (Vercel) | https://instaai-client.vercel.app |
+| Backend API (Render) | https://instaai-server.onrender.com |
+| Admin account | `admin@instaclone.com` / `Admin@123` |
+
+Open the site in **Microsoft Edge** to sign in as the administrator: the login rule sends a
+Chrome sign-in to email-OTP verification, and that mailbox is not monitored. Edge (and any
+non-Chrome browser) logs in directly. The Render free instance sleeps after ~15 idle minutes,
+so the first request after a gap can take up to a minute.
+
+---
+
 ## 1. Setup
 
 ```bash

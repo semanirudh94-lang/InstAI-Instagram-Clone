@@ -1,9 +1,15 @@
 # Deployment
 
-Frontend on **Vercel**, backend on **Render**, database on **MongoDB Atlas**.
+Frontend on **Vercel** (https://instaai-client.vercel.app), backend on **Render**
+(https://instaai-server.onrender.com), database on **MongoDB Atlas**.
 The backend cannot run on Vercel: it keeps socket.io connections open and runs
 three `node-cron` jobs (story expiry, subscription expiry, post scheduler), all
 of which need one persistent Node process.
+
+The Vercel project was created from an uploaded copy of `client/` rather than a
+linked Git repository, so editing the frontend needs another upload (or linking
+the repo in the Vercel dashboard to get push-to-deploy). Render *is* linked to
+`main`, so pushing to GitHub redeploys the backend automatically.
 
 ## 1. Database — MongoDB Atlas
 
