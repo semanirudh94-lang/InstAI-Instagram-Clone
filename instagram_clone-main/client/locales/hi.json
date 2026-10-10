@@ -525,5 +525,18 @@
   "errors.report_already_exists": "आप इसे पहले रिपोर्ट कर चुके हैं। हमारी टीम समीक्षा कर रही है।",
   "errors.report_submitted": "धन्यवाद — हमारी टीम इसकी समीक्षा करेगी।",
   "errors.ai_unavailable": "इस सर्वर पर AI सहायता कॉन्फ़िगर नहीं है।",
-  "errors.ai_prompt_required": "बताइए कैप्शन किस बारे में होना चाहिए।"
+  "errors.ai_prompt_required": "बताइए कैप्शन किस बारे में होना चाहिए।",
+  "search.title": "खोज",
+  "search.placeholder": "लोग खोजें",
+  "search.hint": "खोजने के लिए कम से कम 2 अक्षर लिखें।",
+  "search.noResults": "कोई व्यक्ति नहीं मिला।",
+  "explore.title": "एक्सप्लोर",
+  "explore.empty": "अभी देखने के लिए कोई पोस्ट नहीं है।",
+  "reels.title": "रील्स",
+  "reels.empty": "अभी कोई रील नहीं। वीडियो पोस्ट शेयर करें, वह यहां दिखेगी।",
+  "notifications.title": "सूचनाएं",
+  "notifications.empty": "अभी कोई गतिविधि नहीं।",
+  "notifications.like": "ने आपकी पोस्ट को पसंद किया",
+  "notifications.comment": "ने टिप्पणी की: {text}",
+  "notifications.follow": "ने आपको फ़ॉलो करना शुरू किया"
 }

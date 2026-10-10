@@ -525,5 +525,18 @@
   "errors.report_already_exists": "Vous avez déjà signalé ce contenu. Notre équipe l'examine.",
   "errors.report_submitted": "Merci — notre équipe va examiner cela.",
   "errors.ai_unavailable": "L’assistance IA n’est pas configurée sur ce serveur.",
-  "errors.ai_prompt_required": "Décrivez le sujet de la légende."
+  "errors.ai_prompt_required": "Décrivez le sujet de la légende.",
+  "search.title": "Recherche",
+  "search.placeholder": "Rechercher des personnes",
+  "search.hint": "Saisissez au moins 2 caractères pour rechercher.",
+  "search.noResults": "Aucune personne trouvée.",
+  "explore.title": "Explorer",
+  "explore.empty": "Aucune publication à explorer pour le moment.",
+  "reels.title": "Reels",
+  "reels.empty": "Aucun reel pour le moment. Publiez une vidéo et elle apparaîtra ici.",
+  "notifications.title": "Notifications",
+  "notifications.empty": "Aucune activité pour le moment.",
+  "notifications.like": "a aimé votre publication",
+  "notifications.comment": "a commenté : {text}",
+  "notifications.follow": "a commencé à vous suivre"
 }

@@ -525,5 +525,18 @@
   "errors.report_already_exists": "Você já denunciou. Nossa equipe está analisando.",
   "errors.report_submitted": "Obrigado — nossa equipe vai analisar.",
   "errors.ai_unavailable": "A assistência de IA não está configurada neste servidor.",
-  "errors.ai_prompt_required": "Descreva sobre o que deve ser a legenda."
+  "errors.ai_prompt_required": "Descreva sobre o que deve ser a legenda.",
+  "search.title": "Pesquisar",
+  "search.placeholder": "Pesquisar pessoas",
+  "search.hint": "Digite pelo menos 2 caracteres para pesquisar.",
+  "search.noResults": "Nenhuma pessoa encontrada.",
+  "explore.title": "Explorar",
+  "explore.empty": "Ainda não há publicações para explorar.",
+  "reels.title": "Reels",
+  "reels.empty": "Ainda não há reels. Publique um vídeo e ele aparecerá aqui.",
+  "notifications.title": "Notificações",
+  "notifications.empty": "Ainda não há atividade.",
+  "notifications.like": "curtiu sua publicação",
+  "notifications.comment": "comentou: {text}",
+  "notifications.follow": "começou a seguir você"
 }

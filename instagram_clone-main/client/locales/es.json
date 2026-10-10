@@ -525,5 +525,18 @@
   "errors.report_already_exists": "Ya lo has denunciado. Nuestro equipo lo está revisando.",
   "errors.report_submitted": "Gracias, nuestro equipo lo revisará.",
   "errors.ai_unavailable": "La asistencia de IA no está configurada en este servidor.",
-  "errors.ai_prompt_required": "Describe de qué debe tratar la publicación."
+  "errors.ai_prompt_required": "Describe de qué debe tratar la publicación.",
+  "search.title": "Búsqueda",
+  "search.placeholder": "Buscar personas",
+  "search.hint": "Escribe al menos 2 caracteres para buscar.",
+  "search.noResults": "No se encontraron personas.",
+  "explore.title": "Explorar",
+  "explore.empty": "Aún no hay publicaciones para explorar.",
+  "reels.title": "Reels",
+  "reels.empty": "Aún no hay reels. Comparte un video y aparecerá aquí.",
+  "notifications.title": "Notificaciones",
+  "notifications.empty": "Aún no hay actividad.",
+  "notifications.like": "le gustó tu publicación",
+  "notifications.comment": "comentó: {text}",
+  "notifications.follow": "comenzó a seguirte"
 }

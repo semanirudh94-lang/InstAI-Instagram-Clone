@@ -525,5 +525,18 @@
   "errors.report_already_exists": "You already reported this. Our team is reviewing it.",
   "errors.report_submitted": "Thanks — our team will review this.",
   "errors.ai_unavailable": "AI assistance is not configured on this server.",
-  "errors.ai_prompt_required": "Describe what the caption should be about."
+  "errors.ai_prompt_required": "Describe what the caption should be about.",
+  "search.title": "Search",
+  "search.placeholder": "Search people",
+  "search.hint": "Type at least 2 characters to search.",
+  "search.noResults": "No people found.",
+  "explore.title": "Explore",
+  "explore.empty": "No posts to explore yet.",
+  "reels.title": "Reels",
+  "reels.empty": "No reels yet. Share a video post and it will appear here.",
+  "notifications.title": "Notifications",
+  "notifications.empty": "No activity yet.",
+  "notifications.like": "liked your post",
+  "notifications.comment": "commented: {text}",
+  "notifications.follow": "started following you"
 }
