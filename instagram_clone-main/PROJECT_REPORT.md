@@ -16,6 +16,7 @@ Nodemailer (Gmail), Twilio (optional), Razorpay, Groq (optional AI helper).
 | --- | --- |
 | Frontend (Vercel) | https://instaai-client.vercel.app |
 | Backend API (Render) | https://instaai-server.onrender.com |
+| Source code (GitHub, public) | https://github.com/semanirudh94-lang/InstAI-Instagram-Clone |
 | Admin account | `admin@instaclone.com` / `Admin@123` |
 | Demo accounts (optional) | `riya.codes`, `arjun.wanders`, `meera.frames` — all `Demo@123` |
 
