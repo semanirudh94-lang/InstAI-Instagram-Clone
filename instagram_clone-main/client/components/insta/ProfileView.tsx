@@ -25,6 +25,7 @@ import { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import MobileNav from "./MobileNav";
 import PostModal from "./PostModal";
+import Avatar from "./Avatar";
 import StoryViewer from "./StoryViewer";
 import CreateHighlightModal from "./CreateHighlightModal";
 import CloseFriendsModal from "./CloseFriendsModal";
@@ -155,11 +156,13 @@ const ProfileView = ({ user, isOwnProfile }: any) => {
                 }
               >
                 <div className="rounded-full bg-ig-surface p-[3px]">
-                  <img
-                    src={user.user.profilePicture}
-                    alt={user.user.username}
-                    className="w-[77px] h-[77px] md:w-[150px] md:h-[150px] rounded-full object-cover"
-                  />
+                  <div className="w-[77px] h-[77px] md:w-[150px] md:h-[150px] rounded-full overflow-hidden">
+                    <Avatar
+                      src={user.user.profilePicture}
+                      name={user.user.username}
+                      className="rounded-full"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

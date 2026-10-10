@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { Plus, ChevronLeft, ChevronRight } from "lucide-react";
 import StoryViewer from "./StoryViewer";
+import Avatar from "./Avatar";
 import CreateStoryModal from "./CreateStoryModal";
 import useAuthStore from "@/store/authStore";
 import { useLanguage } from "@/lib/LanguageProvider";
@@ -35,11 +36,7 @@ function StoryRing({
           }`}
         >
           <div className="w-full h-full rounded-full bg-ig-surface p-[2px]">
-            <img
-              src={avatar}
-              alt={label}
-              className="w-full h-full rounded-full object-cover"
-            />
+            <Avatar src={avatar} name={label} className="rounded-full" />
           </div>
         </div>
         {isSelf && !hasStory && (

@@ -13,6 +13,8 @@ const ADMIN = {
   fullName: "Platform Administrator",
   email: "admin@instaclone.com",
   password: "Admin@123",
+  profilePicture:
+    "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=200",
 };
 
 const seedAdmin = async () => {
