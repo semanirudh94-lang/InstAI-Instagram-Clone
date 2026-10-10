@@ -17,11 +17,17 @@ Nodemailer (Gmail), Twilio (optional), Razorpay, Groq (optional AI helper).
 | Frontend (Vercel) | https://instaai-client.vercel.app |
 | Backend API (Render) | https://instaai-server.onrender.com |
 | Admin account | `admin@instaclone.com` / `Admin@123` |
+| Demo accounts (optional) | `riya.codes`, `arjun.wanders`, `meera.frames` — all `Demo@123` |
 
 Open the site in **Microsoft Edge** to sign in as the administrator: the login rule sends a
 Chrome sign-in to email-OTP verification, and that mailbox is not monitored. Edge (and any
 non-Chrome browser) logs in directly. The Render free instance sleeps after ~15 idle minutes,
 so the first request after a gap can take up to a minute.
+
+The demo accounts and their posts exist only because `npm run seed:demo` was run once
+against this database so the feed is not empty during evaluation. The seeder is idempotent and
+only touches its own users — delete `server/src/seed/demo.seed.js` (and the `seed:demo` script)
+for a clean production database.
 
 ---
 
@@ -33,6 +39,7 @@ cd server
 npm install
 cp .env.example .env          # fill in your own credentials (see section 2)
 npm run seed:admin            # creates the administrator account
+npm run seed:demo             # optional: demo users, posts, likes, comments, follows
 npm run dev                   # http://localhost:5000
 
 # 2 — frontend (separate terminal)
@@ -258,6 +265,9 @@ UI lives at `client/app/admin/page.tsx` with `components/admin/ResourceTable.tsx
 * **Login window** uses the server's local clock (10:00–13:00) exactly as specified, while the
   **payment window** is pinned to IST — the two are deliberately different because the
   requirements are worded differently.
-* A few decorative clone features (saved-posts bookmark, suggested-users rail, unread DM badge,
-  and the Search/Explore/Reels/Notifications nav entries) are still mock or inert; they are part
-  of the original UI skeleton and are not covered by the six assignment tasks.
+* The bookmark (save) button, the suggested-users rail and the unread DM badge are still
+  decorative parts of the original UI skeleton — they change local state only and have no
+  endpoint behind them. The Search, Explore, Reels and Notifications pages that used to be
+  inert are now wired: search follows/unfollows through `/api/follow`, Explore and Reels read
+  published posts from `/api/posts`, and Notifications is served by `GET /api/notifications`,
+  which derives activity from the existing follow, like and comment documents.
