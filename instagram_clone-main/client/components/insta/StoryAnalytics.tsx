@@ -6,6 +6,7 @@ import axiosInstance from "@/lib/axios";
 import { useLanguage } from "@/lib/LanguageProvider";
 import { socket } from "@/lib/socket";
 import { toast } from "../ui/toast";
+import Avatar from "./Avatar";
 
 interface Viewer {
   _id: string;
@@ -364,11 +365,13 @@ const StoryAnalytics = ({ storyId, onClose }: Props) => {
                 <div className="flex flex-col gap-2">
                   {analytics.viewers.map((v) => (
                     <div key={v._id} className="flex items-center gap-3">
-                      <img
-                        src={v.viewer?.profilePicture}
-                        alt=""
-                        className="w-9 h-9 rounded-full object-cover"
-                      />
+                      <div className="w-9 h-9 rounded-full overflow-hidden shrink-0">
+                        <Avatar
+                          src={v.viewer?.profilePicture}
+                          name={v.viewer?.username}
+                          className="rounded-full"
+                        />
+                      </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm text-ig-text font-medium truncate">
                           {v.viewer?.username}
@@ -405,11 +408,13 @@ const StoryAnalytics = ({ storyId, onClose }: Props) => {
                 <div className="flex flex-col gap-2">
                   {analytics.replies.map((r) => (
                     <div key={r._id} className="flex items-start gap-3">
-                      <img
-                        src={r.user?.profilePicture}
-                        alt=""
-                        className="w-8 h-8 rounded-full object-cover shrink-0"
-                      />
+                      <div className="w-8 h-8 rounded-full overflow-hidden shrink-0">
+                        <Avatar
+                          src={r.user?.profilePicture}
+                          name={r.user?.username}
+                          className="rounded-full"
+                        />
+                      </div>
                       <div className="bg-ig-hover rounded-lg px-3 py-2 flex-1">
                         <p className="text-xs font-semibold text-ig-text">
                           {r.user?.username}

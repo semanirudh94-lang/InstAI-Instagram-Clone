@@ -11,6 +11,7 @@ import {
   type PostComment,
 } from "@/lib/comment.service";
 import { reportTarget } from "@/lib/report.service";
+import Avatar from "./Avatar";
 import useAuthStore from "@/store/authStore";
 import {
   Bookmark,
@@ -188,10 +189,10 @@ const Postcard = ({ post }: any) => {
         >
           <div className="w-8 h-8 rounded-full overflow-hidden story-gradient p-[2px]">
             <div className="w-full h-full rounded-full bg-ig-surface p-[1px]">
-              <img
+              <Avatar
                 src={post.user.profilePicture}
-                alt={post.user.username}
-                className="w-full h-full rounded-full object-cover"
+                name={post.user.username}
+                className="rounded-full"
               />
             </div>
           </div>
@@ -428,11 +429,7 @@ const Postcard = ({ post }: any) => {
       {/* Comment input */}
       <div className="border-t border-ig-border px-4 py-3 flex items-center gap-3">
         <div className="w-7 h-7 rounded-full overflow-hidden shrink-0">
-          <img
-            src={user?.profilePicture}
-            alt="you"
-            className="w-full h-full object-cover"
-          />
+          <Avatar src={user?.profilePicture} name={user?.username} className="rounded-full" />
         </div>
         <form
           onSubmit={handleComment}

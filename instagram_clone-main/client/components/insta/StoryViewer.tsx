@@ -20,6 +20,7 @@ import {
 } from "@/lib/story.service";
 import { toast } from "../ui/toast";
 import StoryAnalytics from "./StoryAnalytics";
+import Avatar from "./Avatar";
 
 const IMAGE_DURATION = 5000;
 const QUICK_REACTIONS = ["❤️", "🔥", "👏", "😍", "😮", "😂"];
@@ -274,10 +275,10 @@ const StoryViewer = ({ groups, initialGroupIndex, onClose, onSeen }: Props) => {
         <div className="absolute top-7 left-3 right-3 flex items-center justify-between z-10">
           <div className="flex items-center gap-2 pointer-events-none">
             <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-white shrink-0">
-              <img
+              <Avatar
                 src={currentGroup.user.profilePicture}
-                alt=""
-                className="w-full h-full object-cover"
+                name={currentGroup.user.username}
+                className="rounded-full"
               />
             </div>
             <span className="text-white text-sm font-semibold drop-shadow">

@@ -11,6 +11,7 @@ import {
   CloseFriend,
 } from "@/lib/closeFriends.service";
 import { toast } from "../ui/toast";
+import Avatar from "./Avatar";
 
 interface Props {
   onClose: () => void;
@@ -79,11 +80,9 @@ const CloseFriendsModal = ({ onClose }: Props) => {
     action: React.ReactNode;
   }) => (
     <div className="flex items-center gap-3 px-4 py-2">
-      <img
-        src={u.profilePicture}
-        alt=""
-        className="w-10 h-10 rounded-full object-cover shrink-0"
-      />
+      <div className="w-10 h-10 rounded-full overflow-hidden shrink-0">
+        <Avatar src={u.profilePicture} name={u.username} className="rounded-full" />
+      </div>
       <div className="flex-1 min-w-0">
         <p className="text-sm text-ig-text font-medium truncate">{u.username}</p>
         <p className="text-xs text-ig-muted truncate">{u.fullName}</p>

@@ -1,6 +1,7 @@
 "use client";
 
 import MobileNav from "@/components/insta/MobileNav";
+import Avatar from "@/components/insta/Avatar";
 import Sidebar from "@/components/insta/Sidebar";
 import axiosInstance from "@/lib/axios";
 import {
@@ -353,11 +354,13 @@ function ChatPanel({ conv, messages, user, setMessages, onBack }: any) {
             className="flex items-center gap-3"
           >
             <div className="relative">
-              <img
-                src={participant.profilePicture}
-                alt={participant.username}
-                className="w-10 h-10 rounded-full object-cover"
-              />
+              <div className="w-10 h-10 rounded-full overflow-hidden">
+                <Avatar
+                  src={participant.profilePicture}
+                  name={participant.username}
+                  className="rounded-full"
+                />
+              </div>
               <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white" />
             </div>
             <div>
@@ -384,11 +387,13 @@ function ChatPanel({ conv, messages, user, setMessages, onBack }: any) {
       <div className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-2 scrollbar-hide">
         {/* Profile card at top */}
         <div className="flex flex-col items-center gap-2 py-6 mb-2">
-          <img
-            src={participant.profilePicture}
-            alt={participant.username}
-            className="w-20 h-20 rounded-full object-cover"
-          />
+          <div className="w-20 h-20 rounded-full overflow-hidden">
+            <Avatar
+              src={participant.profilePicture}
+              name={participant.username}
+              className="rounded-full"
+            />
+          </div>
           <p className="text-base font-semibold text-ig-text">
             {participant.username}
           </p>
@@ -428,11 +433,13 @@ function ChatPanel({ conv, messages, user, setMessages, onBack }: any) {
         {/* Typing indicator */}
         {typing && (
           <div className="flex items-end gap-2">
-            <img
-              src={participant.profilePicture}
-              alt=""
-              className="w-7 h-7 rounded-full object-cover shrink-0"
-            />
+            <div className="w-7 h-7 rounded-full overflow-hidden shrink-0">
+              <Avatar
+                src={participant.profilePicture}
+                name={participant.username}
+                className="rounded-full"
+              />
+            </div>
             <div className="bg-ig-hover rounded-3xl rounded-bl-md px-4 py-3 flex items-center gap-1">
               {[0, 1, 2].map((i) => (
                 <span
@@ -570,11 +577,13 @@ function MessageBubble({
       className={`flex items-end gap-2 group ${isMe ? "flex-row-reverse" : ""}`}
     >
       {!isMe && (
-        <img
-          src={participant?.profilePicture}
-          alt={participant?.username}
-          className="w-7 h-7 rounded-full object-cover shrink-0 mb-0.5"
-        />
+        <div className="w-7 h-7 rounded-full overflow-hidden shrink-0 mb-0.5">
+          <Avatar
+            src={participant?.profilePicture}
+            name={participant?.username}
+            className="rounded-full"
+          />
+        </div>
       )}
 
       <div className="relative max-w-[70%]">
@@ -657,11 +666,13 @@ function ConversationItem({
       }`}
     >
       <div className="relative shrink-0">
-        <img
-          src={participant.profilePicture}
-          alt={participant.username}
-          className="w-14 h-14 rounded-full object-cover"
-        />
+        <div className="w-14 h-14 rounded-full overflow-hidden">
+          <Avatar
+            src={participant.profilePicture}
+            name={participant.username}
+            className="rounded-full"
+          />
+        </div>
         <span className="absolute bottom-0.5 right-0.5 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-white" />
       </div>
       <div className="flex-1 min-w-0">
