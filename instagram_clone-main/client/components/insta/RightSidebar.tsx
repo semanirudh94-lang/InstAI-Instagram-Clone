@@ -1,12 +1,15 @@
 "use client";
 
-import { currentUser, suggestedUsers } from "@/lib/mock-data";
+import { suggestedUsers } from "@/lib/mock-data";
 import { useLanguage } from "@/lib/LanguageProvider";
+import useAuthStore from "@/store/authStore";
+import Avatar from "./Avatar";
 import Link from "next/link";
 import { useState } from "react";
 
 const RightSidebar = () => {
   const { t } = useLanguage();
+  const user = useAuthStore((state) => state.user);
   const [followed, setFollowed] = useState<Record<string, boolean>>({});
   const toggleFollow = (id: string) => {
     setFollowed((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -18,19 +21,19 @@ const RightSidebar = () => {
         <Link href="/profile">
           <div className="w-11 h-11 rounded-full overflow-hidden story-gradient p-[2px] shrink-0">
             <div className="w-full h-full rounded-full bg-ig-surface p-[1px]">
-              <img
-                src={currentUser.profilePic}
-                alt={currentUser.username}
-                className="w-full h-full rounded-full object-cover"
+              <Avatar
+                src={user?.profilePicture}
+                name={user?.username}
+                className="rounded-full"
               />
             </div>
           </div>
         </Link>
         <div className="flex-1 min-w-0">
           <Link href="/profile" className="block text-sm font-semibold text-ig-text hover:opacity-70 truncate">
-            {currentUser.username}
+            {user?.username}
           </Link>
-          <p className="text-sm text-ig-muted truncate">{currentUser.fullName}</p>
+          <p className="text-sm text-ig-muted truncate">{user?.fullName}</p>
         </div>
         <Link
           href="/login"

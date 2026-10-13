@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "@/lib/theme-context";
 import { useLanguage } from "@/lib/LanguageProvider";
-import { currentUser, mockConversations } from "@/lib/mock-data";
+import { mockConversations } from "@/lib/mock-data";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
@@ -26,6 +26,7 @@ import { useCreateModal } from "@/lib/createmodelcontext";
 import axiosInstance from "@/lib/axios";
 import { toast } from "../ui/toast";
 import useAuthStore from "@/store/authStore";
+import Avatar from "./Avatar";
 const Sidebar = () => {
   const totalUnread = mockConversations.reduce((s, c) => s + c.unread, 0);
   const { theme, toggle } = useTheme();
@@ -144,11 +145,7 @@ const Sidebar = () => {
           className={`flex items-center gap-4 px-3 py-3 rounded-lg hover:bg-ig-hover transition-colors ${isActive("/profile") ? "font-bold" : ""}`}
         >
           <div className="w-6 h-6 rounded-full overflow-hidden shrink-0">
-            <img
-              src={currentUser.profilePic}
-              alt={currentUser.username}
-              className="w-full h-full object-cover"
-            />
+            <Avatar src={user?.profilePicture} name={user?.username} className="rounded-full" />
           </div>
           <span className="hidden xl:block text-[15px] text-ig-text">
             {t("nav.profile")}

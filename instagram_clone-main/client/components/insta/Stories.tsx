@@ -12,12 +12,14 @@ import { fetchStoryFeed, StoryGroup } from "@/lib/story.service";
 function StoryRing({
   avatar,
   label,
+  fallback,
   isSelf = false,
   viewed = false,
   hasStory = true,
   onClick,
 }: {
   avatar: string;
+  fallback?: string;
   label: string;
   isSelf?: boolean;
   viewed?: boolean;
@@ -36,7 +38,7 @@ function StoryRing({
           }`}
         >
           <div className="w-full h-full rounded-full bg-ig-surface p-[2px]">
-            <Avatar src={avatar} name={label} className="rounded-full" />
+            <Avatar src={avatar} name={fallback || label} className="rounded-full" />
           </div>
         </div>
         {isSelf && !hasStory && (
@@ -163,6 +165,7 @@ export default function Stories() {
           {ownGroup ? (
             <StoryRing
               avatar={ownGroup.user.profilePicture}
+              fallback={me?.username}
               label={t("story.yourStory")}
               isSelf
               hasStory
@@ -172,6 +175,7 @@ export default function Stories() {
           ) : (
             <StoryRing
               avatar={me?.profilePicture || ""}
+              fallback={me?.username}
               label={t("story.yourStory")}
               isSelf
               hasStory={false}

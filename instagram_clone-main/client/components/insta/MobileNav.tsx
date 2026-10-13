@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Home, Search, Compass, Film, PlusSquare } from "lucide-react";
-import { currentUser } from "@/lib/mock-data";
+import useAuthStore from "@/store/authStore";
+import Avatar from "./Avatar";
 import { useCreateModal } from "@/lib/createmodelcontext";
 
 export default function MobileNav() {
   const pathname = usePathname();
   const { open: openCreate } = useCreateModal();
+  const user = useAuthStore((state) => state.user);
   const isActive = (href: string) => pathname === href;
 
   return (
@@ -49,10 +51,10 @@ export default function MobileNav() {
         <div
           className={`w-6 h-6 rounded-full overflow-hidden ${isActive("/profile") ? "ring-2 ring-ig-text ring-offset-1 ring-offset-ig-surface" : ""}`}
         >
-          <img
-            src={currentUser.profilePic}
-            alt={currentUser.username}
-            className="w-full h-full object-cover"
+          <Avatar
+            src={user?.profilePicture}
+            name={user?.username}
+            className="rounded-full"
           />
         </div>
       </Link>

@@ -1,7 +1,7 @@
 "use client";
 
 import axiosInstance from "@/lib/axios";
-import { currentUser, formatLikeCount, formatTimeAgo } from "@/lib/mock-data";
+import { formatLikeCount, formatTimeAgo } from "@/lib/mock-data";
 import { useLanguage } from "@/lib/LanguageProvider";
 import { serverMessage } from "@/lib/serverError";
 import {
@@ -296,12 +296,22 @@ const Postcard = ({ post }: any) => {
         className="relative bg-black cursor-pointer select-none"
         onClick={handleDoubleTap}
       >
-        <img
-          src={post.media[0].url}
-          alt="post"
-          className="w-full object-cover max-h-[600px]"
-          draggable={false}
-        />
+        {post.media[0].type === "video" ? (
+          <video
+            src={post.media[0].url}
+            controls
+            playsInline
+            onClick={(e) => e.stopPropagation()}
+            className="w-full object-contain max-h-[600px]"
+          />
+        ) : (
+          <img
+            src={post.media[0].url}
+            alt="post"
+            className="w-full object-cover max-h-[600px]"
+            draggable={false}
+          />
+        )}
         {/* Double-tap heart */}
         <div
           className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-all duration-300 ${

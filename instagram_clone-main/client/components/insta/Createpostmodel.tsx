@@ -1,6 +1,5 @@
 "use client";
 
-import { currentUser } from "@/lib/mock-data";
 import { ChevronDown, ChevronLeft, ImageIcon, MapPin, X } from "lucide-react";
 import { useRef, useState } from "react";
 import { uploadPostMedia } from "@/lib/post.service";
@@ -8,6 +7,8 @@ import axiosInstance from "@/lib/axios";
 import { useLanguage } from "@/lib/LanguageProvider";
 import { serverMessage } from "@/lib/serverError";
 import TagUsersInput from "@/components/insta/TagUsersInput";
+import Avatar from "@/components/insta/Avatar";
+import useAuthStore from "@/store/authStore";
 import type { TaggableUser } from "@/lib/auth.service";
 import { toast } from "../ui/toast";
 type Stage = "select" | "crop" | "share";
@@ -37,6 +38,7 @@ interface CreatePostModalProps {
 
 const Createpostmodel = ({ onClose }: CreatePostModalProps) => {
   const { t, language } = useLanguage();
+  const user = useAuthStore((state) => state.user);
   const [stage, setStage] = useState<Stage>("select");
   const [image, setImage] = useState<string | null>(null);
   const [ratio, setRatio] = useState<AspectRatio>("1:1");
@@ -316,14 +318,16 @@ const Createpostmodel = ({ onClose }: CreatePostModalProps) => {
               <div className="flex-1 flex flex-col overflow-y-auto divide-y divide-ig-border">
                 {/* User + caption */}
                 <div className="p-4 flex gap-3">
-                  <img
-                    src={currentUser.profilePic}
-                    alt={currentUser.username}
-                    className="w-8 h-8 rounded-full object-cover shrink-0"
-                  />
+                  <div className="w-8 h-8 rounded-full overflow-hidden shrink-0">
+                    <Avatar
+                      src={user?.profilePicture}
+                      name={user?.username}
+                      className="rounded-full"
+                    />
+                  </div>
                   <div className="flex-1">
                     <p className="text-xs font-semibold text-ig-text mb-1">
-                      {currentUser.username}
+                      {user?.username}
                     </p>
                     <button
                       type="button"
