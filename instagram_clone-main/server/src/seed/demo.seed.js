@@ -83,7 +83,7 @@ const POSTS = [
     user: "meera.frames",
     media: [
       {
-        url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+        url: "https://res.cloudinary.com/demo/video/upload/elephants.mp4",
         type: "video",
         duration: 15,
       },
